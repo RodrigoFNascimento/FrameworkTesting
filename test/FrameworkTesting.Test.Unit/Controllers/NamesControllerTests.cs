@@ -1,15 +1,14 @@
-using FrameworkTesting.Controllers;
+﻿using FrameworkTesting.Controllers;
 using System.Web.Http.Results;
 
-namespace FrameworkTesting.Test.Unit;
-
-public class ValuesControllerTests
+namespace FrameworkTesting.Test.Unit.Controllers;
+public class NamesControllerTests
 {
-    private readonly ValuesController _sut;
+    private readonly NamesController _sut;
 
-    public ValuesControllerTests()
+    public NamesControllerTests()
     {
-        _sut = new ValuesController();
+        _sut = new();
     }
 
     [Fact]

@@ -1,14 +1,14 @@
-using System.Net;
+﻿using System.Net;
 
 namespace FrameworkTesting.Test.Integration.Controllers;
 
 [Collection("FrameworkTesting collection")]
-public class ValuesControllerTests
+public class NamesControllerTests
 {
     private readonly FrameworkTestingFactory _fixture;
-    private const string RoutePrefix = "Values";
+    private const string RoutePrefix = "Names";
 
-    public ValuesControllerTests(FrameworkTestingFactory fixture)
+    public NamesControllerTests(FrameworkTestingFactory fixture)
     {
         _fixture = fixture;
     }

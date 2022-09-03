@@ -3,7 +3,7 @@
 namespace FrameworkTesting.Test.Integration;
 public class FrameworkTestingFactory : IDisposable
 {
-    private const string _baseUrl = "https://localhost:44352/";
+    private const string BaseUrl = "https://localhost:44352/";
     private readonly HttpServer _server;
     private bool isDisposed;
     public HttpClient HttpClient;
@@ -16,7 +16,7 @@ public class FrameworkTestingFactory : IDisposable
         _server = new HttpServer(config);
         HttpClient = new HttpClient(_server)
         {
-            BaseAddress = new Uri(_baseUrl)
+            BaseAddress = new Uri(BaseUrl)
         };
     }
 
