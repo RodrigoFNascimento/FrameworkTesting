@@ -1,24 +1,14 @@
 using System.Net;
-using System.Web.Http;
 
 namespace FrameworkTesting.Test.Integration;
 
-public class ValuesControllerTests
+public class ValuesControllerTests : IClassFixture<FrameworkTestingFactory>
 {
-    private readonly string _baseUrl = "https://localhost:44352/";
-    private readonly HttpClient _httpClient;
-    private readonly HttpServer _server;
+    private readonly FrameworkTestingFactory _fixture;
 
-    public ValuesControllerTests()
+    public ValuesControllerTests(FrameworkTestingFactory fixture)
     {
-        var config = new HttpConfiguration();
-        WebApiConfig.Register(config);
-        config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
-        _server = new HttpServer(config);
-        _httpClient = new HttpClient(_server)
-        {
-            BaseAddress = new Uri(_baseUrl)
-        };
+        _fixture = fixture;
     }
 
     [Fact]
@@ -28,7 +18,7 @@ public class ValuesControllerTests
         
 
         // Act
-        var result = await _httpClient.GetAsync("Values/Get");
+        var result = await _fixture.HttpClient.GetAsync("Values/Get");
 
         // Assert
         Assert.Equal(HttpStatusCode.OK, result.StatusCode);
