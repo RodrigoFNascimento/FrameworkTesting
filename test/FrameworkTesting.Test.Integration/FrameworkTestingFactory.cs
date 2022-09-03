@@ -4,17 +4,17 @@ namespace FrameworkTesting.Test.Integration;
 public class FrameworkTestingFactory : IDisposable
 {
     private const string _baseUrl = "https://localhost:44352/";
+    private readonly HttpServer _server;
     private bool isDisposed;
     public HttpClient HttpClient;
-    public HttpServer Server;
 
     public FrameworkTestingFactory()
     {
         var config = new HttpConfiguration();
         WebApiConfig.Register(config);
         config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
-        Server = new HttpServer(config);
-        HttpClient = new HttpClient(Server)
+        _server = new HttpServer(config);
+        HttpClient = new HttpClient(_server)
         {
             BaseAddress = new Uri(_baseUrl)
         };
@@ -33,7 +33,7 @@ public class FrameworkTestingFactory : IDisposable
         if (disposing)
         {
             HttpClient.Dispose();
-            Server.Dispose();
+            _server.Dispose();
         }
 
         isDisposed = true;

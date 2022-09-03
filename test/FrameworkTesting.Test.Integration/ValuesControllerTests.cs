@@ -2,7 +2,8 @@ using System.Net;
 
 namespace FrameworkTesting.Test.Integration;
 
-public class ValuesControllerTests : IClassFixture<FrameworkTestingFactory>
+[Collection("FrameworkTesting collection")]
+public class ValuesControllerTests
 {
     private readonly FrameworkTestingFactory _fixture;
 
