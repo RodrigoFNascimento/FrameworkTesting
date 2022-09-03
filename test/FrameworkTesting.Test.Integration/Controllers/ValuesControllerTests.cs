@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace FrameworkTesting.Test.Integration;
+namespace FrameworkTesting.Test.Integration.Controllers;
 
 [Collection("FrameworkTesting collection")]
 public class ValuesControllerTests
@@ -16,7 +16,7 @@ public class ValuesControllerTests
     public async Task Get_ShouldReturnOk_WhenRequestIsValid()
     {
         // Arrange
-        
+
 
         // Act
         var result = await _fixture.HttpClient.GetAsync("Values/Get");
